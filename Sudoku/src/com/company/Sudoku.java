@@ -1,10 +1,10 @@
 package com.company;
-
+import java.util.Scanner;
 public class Sudoku {
     private int [][]matrix;
     private int [][]changedMatrix;
     private int emptySpaces;
-
+    Scanner input = new Scanner(System.in);
 
     public Sudoku(int [][] matrix){
         this.matrix=matrix;
@@ -17,11 +17,20 @@ public class Sudoku {
         showMatrix(changedMatrix);
 
         while(i<this.emptySpaces) {
-            insertValue(2, 2);
+            int row,column;
+            System.out.println("Ingrese fila :");
+            row = input.nextInt();
+            System.out.println("Ingrese columna: ");
+            column = input.nextInt();
+            insertValue(row, column);
             showMatrix(changedMatrix);
             i = i + 1;
         }
-        verify();
+        if(verify()) {
+            System.out.println("GANASTE FELICITACIONES");
+        } else {
+            System.out.println("FAIL !!")
+        }
 
 
     }
@@ -37,12 +46,22 @@ public class Sudoku {
             }
     }
 
-    public void verify(){
-
+   public boolean verify(){
+        for(int i  = 0 ; i < 9; i++) {
+            for(int j = 0; j < 9; j++) {
+                if (this.changedMatrix[i][j] != this.matrix[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public void insertValue(int row, int column){
-
+        int value = 0;
+        System.out.println("Ingrese el valor : ");
+        value = input.nextInt();
+        this.changedMatrix[row][column] = value;
     }
 
 }
