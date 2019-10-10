@@ -10,11 +10,13 @@ public class Sudoku {
 
     public Sudoku(int [][] matrix){
         this.matrix=matrix;
+        changeMatrix();
+        this.emptySpaces=51;
+
     }
 
     public void startGame(){
 
-        changeMatrix();
         int i = 0;
         showMatrix(changedMatrix);
 
@@ -32,12 +34,15 @@ public class Sudoku {
         this.changedMatrix = this.matrix;
         Random random = new Random();
         int i =0;
-        while(i<51) {
+        while(i<this.emptySpaces) {
             i=i+1;
             int randomNum1 = random.nextInt((9 - 1) + 1) + 1;
             int randomNum2 = random.nextInt((9 - 1) + 1) + 1;
-
-            this.changedMatrix[randomNum1][randomNum2]=0;
+            if (this.changedMatrix[randomNum1][randomNum2]==0){
+                i=i-1;
+            }else{
+                this.changedMatrix[randomNum1][randomNum2]=0;
+            }
         }
 
     }
