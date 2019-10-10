@@ -1,5 +1,8 @@
 package com.company;
+
+import java.util.Random;
 import java.util.Scanner;
+
 public class Sudoku {
     private int [][]matrix;
     private int [][]changedMatrix;
@@ -8,11 +11,13 @@ public class Sudoku {
 
     public Sudoku(int [][] matrix){
         this.matrix=matrix;
+        changeMatrix();
+        this.emptySpaces=51;
+
     }
 
     public void startGame(){
 
-        this.changedMatrix = changeMatrix(this.matrix);
         int i = 0;
         showMatrix(changedMatrix);
 
@@ -35,7 +40,20 @@ public class Sudoku {
 
     }
 
-    public int[][] changeMatrix(int [][]matrix){
+    public void changeMatrix(){
+        this.changedMatrix = this.matrix;
+        Random random = new Random();
+        int i =0;
+        while(i<this.emptySpaces) {
+            i=i+1;
+            int randomNum1 = random.nextInt((9 - 1) + 1) + 1;
+            int randomNum2 = random.nextInt((9 - 1) + 1) + 1;
+            if (this.changedMatrix[randomNum1][randomNum2]==0){
+                i=i-1;
+            }else{
+                this.changedMatrix[randomNum1][randomNum2]=0;
+            }
+        }
 
     }
 
