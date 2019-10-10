@@ -11,9 +11,8 @@ public class Sudoku {
 
     public Sudoku(int [][] matrix){
         this.matrix=matrix;
-        changeMatrix();
         this.emptySpaces=51;
-
+        changeMatrix();
     }
 
     public void startGame(){
@@ -34,7 +33,7 @@ public class Sudoku {
         if(verify()) {
             System.out.println("GANASTE FELICITACIONES");
         } else {
-            System.out.println("FAIL !!")
+            System.out.println("FAIL !!");
         }
 
 
@@ -46,15 +45,14 @@ public class Sudoku {
         int i =0;
         while(i<this.emptySpaces) {
             i=i+1;
-            int randomNum1 = random.nextInt((9 - 1) + 1) + 1;
-            int randomNum2 = random.nextInt((9 - 1) + 1) + 1;
+            int randomNum1 = random.nextInt((8- 1) + 1) ;
+            int randomNum2 = random.nextInt((8 - 1) + 1) ;
             if (this.changedMatrix[randomNum1][randomNum2]==0){
                 i=i-1;
             }else{
                 this.changedMatrix[randomNum1][randomNum2]=0;
             }
         }
-
     }
 
     public void showMatrix(int [][] matrix){
@@ -62,6 +60,8 @@ public class Sudoku {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
+            System.out.println('\n');
+        }
     }
 
    public boolean verify(){
@@ -74,6 +74,7 @@ public class Sudoku {
         }
         return true;
     }
+
 
     public void insertValue(int row, int column){
         int value = 0;

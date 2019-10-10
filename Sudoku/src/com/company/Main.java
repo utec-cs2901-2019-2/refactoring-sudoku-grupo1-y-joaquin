@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.Scanner;
 
 public class Main {
     public static void main(String args[]){
@@ -15,7 +14,7 @@ public class Main {
                 {6,9,2,3,5,1,8,7,4},
                 {7,4,5,2,8,6,3,1,9}
         };
-        Scanner input = new Scanner(System.in);
+
         Sudoku sudoku = new Sudoku(matrix);
         sudoku.startGame();
     }
